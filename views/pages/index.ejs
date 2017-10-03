@@ -59,14 +59,19 @@
 </body>
 <script>
   function updateData() {
-    $("#databody").html('');
+
     $.get('/allevents', function (data) {
-      data.forEach(function (element) {
-        $("#databody").append('<tr><td>' + element.organizer + '</td><td>' + element.begin_time + '</td><td>' + element.end_time + '</td><td>' + element.place + '</td><td>' + element.description + '</td></tr>');
-      }, this);
+      if (data.length > 0) {
+        $("#databody").html('');
+        data.forEach(function (element) {
+          $("#databody").append('<tr><td>' + element.organizer + '</td><td>' + element.begin_time + '</td><td>' + element.end_time + '</td><td>' + element.place + '</td><td>' + element.description + '</td></tr>');
+        }, this);
+      }else{
+        alert('There is no records in database!');
+      }
     });
   }
-
+  updateData();
   $('#removeall').click(function () {
     $.get('/removeall');
     alert('All events were removed!');
