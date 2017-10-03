@@ -67,6 +67,8 @@
           $("#databody").append('<tr><td>' + element.organizer + '</td><td>' + element.begin_time + '</td><td>' + element.end_time + '</td><td>' + element.place + '</td><td>' + element.description + '</td></tr>');
         }, this);
       }else{
+        $("#databody").html('<tr><td>Table is empty</td></tr>');
+
         alert('There is no records in database!');
       }
     });
